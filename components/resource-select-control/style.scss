@@ -1,0 +1,47 @@
+
+// TODO - needs renaming for layouts + templates (some sort of base class?)
+
+.codeamp-components-resource-select-control {
+	// Need to add this specificity to the base control container.
+	/* &.components-base-control {
+		margin-bottom: 8px;
+	} */
+	
+	&__field {
+		position: relative;
+	}
+	&__label {
+		margin-bottom: 8px;
+	}
+	&__add_button {
+		padding: 0;
+		margin: 0;
+		min-height: revert;
+		height: auto;
+		color: var(--wp-admin-theme-color);
+		align-self: center;
+		&:hover {
+			text-decoration: underline;
+		}
+		margin-bottom: 8px;
+	}
+	&__edit_button {
+		height: auto;
+		margin-bottom: 8px;
+	}
+	&__select {
+		width: auto;
+		flex: 1;
+	}
+
+	// Reset the margins on the inner SelectControl container.
+	.components-base-control {
+		margin-bottom: 8px;
+	}
+	.components-base-control__field {
+		margin-bottom: 0;
+	}
+	.components-base-control {
+		flex: 1;
+	}
+}
