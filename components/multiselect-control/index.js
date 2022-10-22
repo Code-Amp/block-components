@@ -29,9 +29,6 @@ function getMatch( optionLabel, options = [] ) {
 	}
 	const computedOptionLabel = optionLabel ?? '';
 	const foundOption = options.find( ( option ) => {
-			console.log("-------------- " )
-			console.log("----- ", option.label )
-			console.log("----- ", computedOptionLabel )
 			return option.label.toLocaleLowerCase().indexOf(  computedOptionLabel.trim().toLocaleLowerCase() ) !== -1
 
 		} );
@@ -458,10 +455,12 @@ export function MultiselectControl( props ) {
 
 		return token;
 	}
-
+	function getUnselectedOptions() {
+		return options.filter( option => value.indexOf( option.value ) === -1) 
+	}
 	function getMatchingSuggestions(
 		searchValue = incompleteTokenValue,
-		_suggestions = options,
+		_suggestions = getUnselectedOptions(),
 		_value = value,
 		_maxSuggestions = maxSuggestions,
 	) {
@@ -671,6 +670,7 @@ export function MultiselectControl( props ) {
 					<SuggestionsList
 						instanceId={ instanceId }
 						match={ getMatch( incompleteTokenValue, options ) }
+						searchValue={ incompleteTokenValue }
 						suggestions={ matchingSuggestions }
 						selectedIndex={ selectedSuggestionIndex }
 						scrollIntoView={ selectedSuggestionScroll }

@@ -23,6 +23,7 @@ export function SuggestionsList( {
 	selectedIndex,
 	scrollIntoView,
 	match,
+	searchValue,
 	onHover,
 	onSelect,
 	suggestions = [],
@@ -77,16 +78,10 @@ export function SuggestionsList( {
 	};
 
 	const computeSuggestionMatch = ( suggestion ) => {
-
-
-		const matchText = match?.label ? match.label.toLocaleLowerCase() : '';
-		if ( matchText.length === 0 ) {
-			return null;
-		}
-
+	
 		const indexOfMatch = suggestion.label
 			.toLocaleLowerCase()
-			.indexOf( matchText );
+			.indexOf( searchValue );
 
 		return {
 			suggestionBeforeMatch: suggestion.label.substring(
@@ -95,10 +90,10 @@ export function SuggestionsList( {
 			),
 			suggestionMatch: suggestion.label.substring(
 				indexOfMatch,
-				indexOfMatch + matchText.length
+				indexOfMatch + searchValue.length
 			),
 			suggestionAfterMatch: suggestion.label.substring(
-				indexOfMatch + matchText.length
+				indexOfMatch + searchValue.length
 			),
 		};
 	};
