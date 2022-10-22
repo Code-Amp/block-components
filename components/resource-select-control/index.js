@@ -14,19 +14,18 @@ const noop = () => {};
 export const ResourceSelectControl =
 	( {
 		onChange = noop,
-		onEdit = noop,
+		onPrimaryAction = noop,
 		onAddNew = noop,
 		label = '',
-		editLabel = __( 'Edit', 'search-filter' ),
 		addNewLabel = __( 'Add new', 'search-filter' ),
 		loadingLabel = __( 'Loading', 'search-filter' ),
-		canEdit = true,
+		showPrimaryAction = true,
 		canAddNew = true,
 		defaultOption,
 		options,
-		selectedId,
-		resourceData,
+		value,
 		help,
+		primaryActionProps = null,
 	} ) => {
 		let allTemplateOptions = [
 			{
@@ -44,11 +43,6 @@ export const ResourceSelectControl =
 			allTemplateOptions.push( ...options );
 		}
 		const instanceId = useInstanceId( ResourceSelectControl );
-
-		const templateLoaded =
-			selectedId &&
-			! isEmpty( resourceData.template ) &&
-			! isEmpty( resourceData.instances );
 
 		return (
 			<BaseControl
@@ -79,25 +73,22 @@ export const ResourceSelectControl =
 				<HStack>
 					<SelectControl
 						id={ instanceId }
-						value={ selectedId }
+						value={ value }
 						options={ allTemplateOptions }
 						className={ 'codeamp-components-resource-select-control__select' }
 						onChange={ onChange }
 					 />
-					{ canEdit && (
+					{ showPrimaryAction && (
 						<Button
-							onClick={ onEdit }
-							isSecondary
-							disabled={
-								selectedId === 'default' || ! templateLoaded
-									? true
-									: false
-							}
+							onClick={ onPrimaryAction }
+							variant="secondary"
+							// disabled={ ! editReady }
 							className={
 								'codeamp-components-resource-select-control__edit_button'
 							}
+							{ ...primaryActionProps }
 						>
-							{ editLabel }
+							{ primaryActionProps?.label ?? __( 'Edit', 'search-filter' ) }
 						</Button>
 					) }
 				</HStack>

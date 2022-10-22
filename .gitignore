@@ -1,0 +1,7 @@
+node_modules
+.idea
+desktop.ini
+.vscode
+/dist
+/local
+*.zip

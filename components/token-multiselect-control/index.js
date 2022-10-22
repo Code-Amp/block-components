@@ -49,7 +49,7 @@ const initialState = {
 	selectedSuggestionScroll: false,
 };
 
-class TokenMultiSelectControl extends Component {
+export class TokenMultiSelectControlBase extends Component {
 	constructor() {
 		super( ...arguments );
 		this.state = initialState;
@@ -412,11 +412,17 @@ class TokenMultiSelectControl extends Component {
 		);
 
 		if ( tokensToAdd.length > 0 ) {
-			const tokenValuesToAdd = tokensToAdd.map( ( tokenLabel ) => {
-				return this.getValueFromLabel( tokenLabel );
+			// Don't add null values
+			const tokenValuesToAdd = [];
+			tokensToAdd.forEach( ( tokenLabel ) => {
+				const tokenValue = this.getValueFromLabel( tokenLabel );
+				if ( tokenValue ) {
+					tokenValuesToAdd.push( tokenValue );
+				}
 			} );
 
 			let newValue = clone( this.props.value );
+
 			newValue.splice.apply(
 				newValue,
 				[ this.getIndexOfInput(), 0 ].concat( tokenValuesToAdd )
@@ -585,6 +591,9 @@ class TokenMultiSelectControl extends Component {
 	}
 
 	renderToken( token, index, tokens ) {
+		if ( token === null ) {
+			return null;
+		}
 		const value = this.getTokenValue( token );
 		const label = this.getLabelFromValue( value ); //todo - optimize
 		const status = token.status ? token.status : undefined;
@@ -627,6 +636,7 @@ class TokenMultiSelectControl extends Component {
 			ref: this.bindInput,
 			key: 'input',
 			disabled: this.props.disabled,
+			placeholder: this.props.placeholder,
 			value: this.state.incompleteTokenValue,
 			onBlur: this.onBlur,
 			isExpanded: this.state.isExpanded,
@@ -641,12 +651,7 @@ class TokenMultiSelectControl extends Component {
 	}
 
 	render() {
-		const {
-			disabled,
-			label = __( 'Add item' ),
-			instanceId,
-			className,
-		} = this.props;
+		const { disabled, label, instanceId, className } = this.props;
 		const { isExpanded } = this.state;
 		const classes = classnames(
 			className,
@@ -678,12 +683,14 @@ class TokenMultiSelectControl extends Component {
 		/* eslint-disable jsx-a11y/no-static-element-interactions */
 		return (
 			<div { ...tokenFieldProps }>
-				<label
-					htmlFor={ `components-form-token-input-${ instanceId }` }
-					className="components-form-token-field__label"
-				>
-					{ label }
-				</label>
+				{ label && (
+					<label
+						htmlFor={ `components-form-token-input-${ instanceId }` }
+						className="components-form-token-field__label"
+					>
+						{ label }
+					</label>
+				) }
 				<div
 					ref={ this.bindTokensAndInput }
 					className={ classes }
@@ -717,7 +724,7 @@ class TokenMultiSelectControl extends Component {
 	}
 }
 
-TokenMultiSelectControl.defaultProps = {
+TokenMultiSelectControlBase.defaultProps = {
 	options: Object.freeze( [] ),
 	maxSuggestions: 100,
 	value: Object.freeze( [] ),
@@ -727,6 +734,7 @@ TokenMultiSelectControl.defaultProps = {
 	onInputChange: () => {},
 	isBorderless: false,
 	disabled: false,
+	placeholder: '',
 	tokenizeOnSpace: false,
 	messages: {
 		added: __( 'Item added.' ),
@@ -735,4 +743,4 @@ TokenMultiSelectControl.defaultProps = {
 	},
 };
 
-export default withSpokenMessages( withInstanceId( TokenMultiSelectControl ) );
+export const TokenMultiSelectControl = withSpokenMessages( withInstanceId( TokenMultiSelectControlBase ) );

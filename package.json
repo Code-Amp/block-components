@@ -22,5 +22,13 @@
   "bugs": {
     "url": "https://github.com/rmorse/codeamp-block-components/issues"
   },
-  "homepage": "https://github.com/rmorse/codeamp-block-components#readme"
+  "homepage": "https://github.com/rmorse/codeamp-block-components#readme",
+  "dependencies": {
+    "@wordpress/icons": "^9.11.0",
+    "classnames": "^2.3.2",
+    "dom-scroll-into-view": "^2.0.1"
+  },
+  "devDependencies": {
+    "@wordpress/dependency-extraction-webpack-plugin": "^4.3.0"
+  }
 }

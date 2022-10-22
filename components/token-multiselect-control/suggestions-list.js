@@ -105,7 +105,7 @@ class SuggestionsList extends Component {
 						className={ 'components-form-token-field__suggestion' }
 						key={ this.props.instanceId + '-loading' }
 					>
-						{ __( 'Loading options…', 'custom-layouts' ) }
+						{ __( 'Loading options…', 'search-filter' ) }
 					</li>
 				) }
 
@@ -119,7 +119,7 @@ class SuggestionsList extends Component {
 							}
 							key={ this.props.instanceId + '-loading' }
 						>
-							{ __( 'No options found', 'custom-layouts' ) }
+							{ __( 'No options found', 'search-filter' ) }
 						</li>
 					) }
 
