@@ -62,7 +62,7 @@ export function MultiselectControl( props ) {
 		onInputChange = () => {},
 		onFocus = undefined,
 		isBorderless = false,
-		closeSuggestionsOnSelection = false,
+		
 		disabled = false,
 		messages = {
 			added: __( 'Item added.' ),
@@ -73,6 +73,7 @@ export function MultiselectControl( props ) {
 		__experimentalRenderItem,
 		__experimentalAutoSelectFirstMatch = true,
 		__experimentalValidateInput = () => true,
+		__experimentalCloseSuggestionsOnSelect = true,
 		__next36pxDefaultSize = false,
 	} = props;
 
@@ -430,7 +431,7 @@ export function MultiselectControl( props ) {
 		setSelectedSuggestionScroll( false );
 		setSelectedSuggestionIndex( -1 );
 
-		if ( closeSuggestionsOnSelection ) {
+		if ( __experimentalCloseSuggestionsOnSelect ) {
 			setIsExpanded( false );
 		}
 		
