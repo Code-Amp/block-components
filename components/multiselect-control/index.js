@@ -62,6 +62,7 @@ export function MultiselectControl( props ) {
 		onInputChange = () => {},
 		onFocus = undefined,
 		isBorderless = false,
+		closeSuggestionsOnSelection = false,
 		disabled = false,
 		messages = {
 			added: __( 'Item added.' ),
@@ -428,7 +429,10 @@ export function MultiselectControl( props ) {
 		setIncompleteTokenValue( '' );
 		setSelectedSuggestionScroll( false );
 		setSelectedSuggestionIndex( -1 );
-		setIsExpanded( false );
+
+		if ( closeSuggestionsOnSelection ) {
+			setIsExpanded( false );
+		}
 		
 		if ( isActive ) {
 			focus();
