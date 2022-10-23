@@ -1,5 +1,4 @@
 @import '../base-styles/style.scss';
-// TODO - needs renaming for layouts + templates (some sort of base class?)
 
 .codeamp-components-multiselect-control {
 	&__label {
@@ -7,12 +6,11 @@
 		margin-bottom: 8px;
 	}
 
-	&__input_container {
+	&__input-container {
 		font-size: 13px;
- 	   line-height: normal;
+		line-height: normal;
 	}
 }
-
 
 .codeamp-components-multiselect-control__input-container {
 	@include input-control();
@@ -173,6 +171,13 @@
 	padding: 0;
 }
 
+.codeamp-components-multiselect-control__no-suggestions {
+	color: $gray-700;
+	font-size: $default-font-size;
+	margin: 0;
+	display: block;
+	padding: 4px 8px;
+}
 .codeamp-components-multiselect-control__suggestion {
 	color: $gray-700;
 	display: block;

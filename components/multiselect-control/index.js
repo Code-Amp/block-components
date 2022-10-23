@@ -63,7 +63,6 @@ export function MultiselectControl( props ) {
 		onFocus = undefined,
 		isBorderless = false,
 		disabled = false,
-		tokenizeOnSpace = false,
 		messages = {
 			added: __( 'Item added.' ),
 			removed: __( 'Item removed.' ),
@@ -196,13 +195,11 @@ export function MultiselectControl( props ) {
 			case 'Delete':
 				preventDefault = handleDeleteKey( deleteTokenAfterInput );
 				break;
-			case 'Space':
-				if ( tokenizeOnSpace ) {
-					preventDefault = addCurrentToken();
-				}
-				break;
 			case 'Escape':
 				preventDefault = handleEscapeKey( event );
+				break;
+			case 'Space':
+				preventDefault = addCurrentToken();
 				break;
 			default:
 				break;
@@ -257,15 +254,10 @@ export function MultiselectControl( props ) {
 
 	function onInputChangeHandler( event ) {
 		const text = event.value;
-		const separator = tokenizeOnSpace ? /[ ,\t]+/ : /[,\t]+/;
-		const items = text.split( separator );
-		const tokenValue = items[ items.length - 1 ] || '';
 
-		if ( items.length > 1 ) {
-			addNewTokens( items.slice( 0, -1 ).value );
-		}
-		setIncompleteTokenValue( tokenValue );
-		onInputChange( tokenValue );
+		setIncompleteTokenValue( text );
+		setIsExpanded( true );
+		onInputChange( text );
 	}
 
 	function handleDeleteKey( _deleteToken ) {
@@ -299,12 +291,18 @@ export function MultiselectControl( props ) {
 	}
 
 	function handleUpArrowKey() {
+		if ( ! isExpanded ) {
+			setIsExpanded( true );
+			setSelectedSuggestionIndex( 0 );
+			setSelectedSuggestionScroll( true );
+			return true;
+		}
 		setSelectedSuggestionIndex( ( index ) => {
 			return (
 				( index === 0
 					? getMatchingSuggestions(
 							incompleteTokenValue,
-							options,
+							getUnselectedOptions(),
 							value,
 							maxSuggestions
 					).length
@@ -317,16 +315,21 @@ export function MultiselectControl( props ) {
 	}
 
 	function handleDownArrowKey() {
+		if ( ! isExpanded ) {
+			setIsExpanded( true );
+			setSelectedSuggestionIndex( 0 );
+			setSelectedSuggestionScroll( true );
+			return true;
+		}
 		setSelectedSuggestionIndex( ( index ) => {
-			return (
-				( index + 1 ) %
-				getMatchingSuggestions(
-					incompleteTokenValue,
-					options,
-					value,
-					maxSuggestions
-				).length
+			const matchingSuggestions = getMatchingSuggestions(
+				incompleteTokenValue,
+				getUnselectedOptions(),
+				value,
+				maxSuggestions
 			);
+			const nextIndex = ( index + 1 ) % matchingSuggestions.length;
+			return nextIndex;
 		} );
 
 		setSelectedSuggestionScroll( true );
@@ -385,15 +388,14 @@ export function MultiselectControl( props ) {
 			moveInputToIndex( index );
 		}
 	}
-
 	function addCurrentToken() {
 		let preventDefault = false;
 		const selectedSuggestion = getSelectedSuggestion();
 
-		if ( selectedSuggestion ) {
+		if ( selectedSuggestion && isExpanded ) {
 			addNewToken( selectedSuggestion );
 			preventDefault = true;
-		} else if ( inputHasValidValue() ) {
+		} else if ( inputHasValidValue() && incompleteTokenValue.trim() !== '' ) {
 			addNewToken( incompleteTokenValue );
 			preventDefault = true;
 		}
@@ -424,10 +426,10 @@ export function MultiselectControl( props ) {
 		speak( messages.added, 'assertive' );
 
 		setIncompleteTokenValue( '' );
-		setSelectedSuggestionIndex( -1 );
 		setSelectedSuggestionScroll( false );
-		setIsExpanded( true );
-
+		setSelectedSuggestionIndex( -1 );
+		setIsExpanded( false );
+		
 		if ( isActive ) {
 			focus();
 		}
@@ -457,11 +459,11 @@ export function MultiselectControl( props ) {
 		_value = value,
 		_maxSuggestions = maxSuggestions,
 	) {
-		if ( searchValue !== '' ) {
+		if ( searchValue.trim() !== '' ) {
 			let startsWithMatch = [];
 			let containsMatch = [];
 			_suggestions.forEach( ( suggestion ) => {
-				const index = suggestion.label.toLocaleLowerCase().indexOf( searchValue.toLocaleLowerCase() );
+				const index = suggestion.label.toLocaleLowerCase().indexOf( searchValue.trim().toLocaleLowerCase() );
 				if ( index === 0 ) {
 					startsWithMatch.push( suggestion );
 				} else if ( index > 0 ) {
@@ -500,7 +502,6 @@ export function MultiselectControl( props ) {
 	}
 
 	function updateSuggestions( resetSelectedSuggestion = true ) {
-		const inputHasMinimumChars = true;
 		const matchingSuggestions =
 			getMatchingSuggestions( incompleteTokenValue );
 		const hasMatchingSuggestions = matchingSuggestions.length > 0;
@@ -518,10 +519,9 @@ export function MultiselectControl( props ) {
 			}
 		}
 	
-		setIsExpanded(
-			hasFocus() ||
-				( inputHasMinimumChars && hasMatchingSuggestions && hasFocus() )
-		);
+		/*  setIsExpanded(
+				( hasMatchingSuggestions && hasFocus() )
+		); */
 		
 		setSelectedSuggestionIndex( 0 );
 
@@ -555,8 +555,8 @@ export function MultiselectControl( props ) {
 		return components;
 	}
 
-	function renderToken( { value, label, onMouseEnter = noop, onMouseLeave = noop, isBorderless = false }, index ) {
-		const _value = value;
+	function renderToken( { value: tValue, label, onMouseEnter = noop, onMouseLeave = noop, isBorderless = false }, index ) {
+		const _value = tValue;
 		const termPosition = index + 1;
 		return (
 			<FlexItem key={ 'token-' + _value }>
@@ -573,6 +573,7 @@ export function MultiselectControl( props ) {
 					disabled={ disabled }
 					messages={ messages }
 					termPosition={ termPosition }
+					termsCount={ value.length }
 				/>
 			</FlexItem>
 		);
@@ -592,7 +593,8 @@ export function MultiselectControl( props ) {
 			selectedSuggestionIndex,
 			style: {
 				lineHeight: '24px',
-			}
+			},
+			onClick: onFocusHandler,
 		};
 
 		return (
@@ -665,7 +667,7 @@ export function MultiselectControl( props ) {
 					<SuggestionsList
 						instanceId={ instanceId }
 						match={ getMatch( incompleteTokenValue, options ) }
-						searchValue={ incompleteTokenValue }
+						searchValue={ incompleteTokenValue.trim() }
 						suggestions={ matchingSuggestions }
 						selectedIndex={ selectedSuggestionIndex }
 						scrollIntoView={ selectedSuggestionScroll }

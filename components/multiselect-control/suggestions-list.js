@@ -9,6 +9,7 @@ import classnames from 'classnames';
  */
 import { useState } from '@wordpress/element';
 import { useRefEffect } from '@wordpress/compose';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -97,7 +98,6 @@ export function SuggestionsList( {
 			),
 		};
 	};
-	console.log(suggestions);
 	return (
 		<ul
 			ref={ listRef }
@@ -105,6 +105,14 @@ export function SuggestionsList( {
 			id={ `codeamp-components-multiselect-suggestions-${ instanceId }` }
 			role="listbox"
 		>
+			{ suggestions.length === 0 && (
+				<li
+					className="codeamp-components-multiselect-control__no-suggestions"
+					role="option"
+				>
+					{ __( 'No results found.', 'codeamp-block-components' ) }
+				</li>
+			) }
 			{ suggestions.map( ( suggestion, index ) => {
 				const matchText = computeSuggestionMatch( suggestion );
 				const className = classnames(
