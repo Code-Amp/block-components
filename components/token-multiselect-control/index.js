@@ -132,7 +132,7 @@ export class TokenMultiSelectControlBase extends Component {
 		// don't open if we clicked a suggestion
 		if (
 			! event.target.classList.contains(
-				'components-form-token-field__suggestion'
+				'codeamp-components-multiselect-control__suggestion'
 			)
 		) {
 			this.setState( { isExpanded: true, isActive: true } );
@@ -655,7 +655,7 @@ export class TokenMultiSelectControlBase extends Component {
 		const { isExpanded } = this.state;
 		const classes = classnames(
 			className,
-			'components-form-token-field__input-container',
+			'codeamp-components-multiselect-control__input-container',
 			{
 				'is-active': this.state.isActive,
 				'is-disabled': disabled,
@@ -663,7 +663,7 @@ export class TokenMultiSelectControlBase extends Component {
 		);
 
 		let tokenFieldProps = {
-			className: 'components-form-token-field',
+			className: 'codeamp-components-multiselect-control',
 			tabIndex: '-1',
 		};
 		const matchingSuggestions = this.getMatchingSuggestions();
@@ -686,7 +686,7 @@ export class TokenMultiSelectControlBase extends Component {
 				{ label && (
 					<label
 						htmlFor={ `components-form-token-input-${ instanceId }` }
-						className="components-form-token-field__label"
+						className="codeamp-components-multiselect-control__label"
 					>
 						{ label }
 					</label>

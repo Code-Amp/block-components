@@ -55,7 +55,7 @@ class TokenInput extends Component {
 				size={ size }
 				className={ classnames(
 					className,
-					'components-form-token-field__input'
+					'codeamp-components-multiselect-control__input'
 				) }
 				autoComplete="off"
 				role="combobox"

@@ -101,14 +101,14 @@ export function SuggestionsList( {
 	return (
 		<ul
 			ref={ listRef }
-			className="components-form-token-field__suggestions-list"
+			className="codeamp-components-multiselect-control__suggestions-list"
 			id={ `components-form-token-suggestions-${ instanceId }` }
 			role="listbox"
 		>
 			{ suggestions.map( ( suggestion, index ) => {
 				const matchText = computeSuggestionMatch( suggestion );
 				const className = classnames(
-					'components-form-token-field__suggestion',
+					'codeamp-components-multiselect-control__suggestion',
 					{
 						'is-selected': index === selectedIndex,
 					}
@@ -122,7 +122,7 @@ export function SuggestionsList( {
 					output = (
 						<span aria-label={ suggestion.label }>
 							{ matchText.suggestionBeforeMatch }
-							<strong className="components-form-token-field__suggestion-match">
+							<strong className="codeamp-components-multiselect-control__suggestion-match">
 								{ matchText.suggestionMatch }
 							</strong>
 							{ matchText.suggestionAfterMatch }

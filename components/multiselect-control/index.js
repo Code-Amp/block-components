@@ -21,7 +21,8 @@ import TokenInput from './token-input';
 import SuggestionsList from './suggestions-list';
 // import { StyledLabel } from '../base-control/styles/base-control-styles';
 
-const identity = ( value ) => value;
+// Styles
+import "./style.scss"
 
 function getMatch( optionLabel, options = [] ) {
 	if ( optionLabel === '' ) {
@@ -57,7 +58,6 @@ export function MultiselectControl( props ) {
 		options = [],
 		maxSuggestions = 100,
 		value = [],
-		displayTransform = identity,
 		onChange = () => {},
 		onInputChange = () => {},
 		onFocus = undefined,
@@ -71,11 +71,9 @@ export function MultiselectControl( props ) {
 			__experimentalInvalid: __( 'Invalid item' ),
 		},
 		__experimentalRenderItem,
-		__experimentalExpandOnFocus = false,
+		__experimentalAutoSelectFirstMatch = true,
 		__experimentalValidateInput = () => true,
-		__experimentalShowHowTo = true,
 		__next36pxDefaultSize = false,
-		__experimentalAutoSelectFirstMatch = false,
 	} = props;
 
 	const instanceId = useInstanceId( MultiselectControl );
@@ -123,11 +121,6 @@ export function MultiselectControl( props ) {
 		updateSuggestions();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ incompleteTokenValue ] );
-
-	useEffect( () => {
-		updateSuggestions();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ __experimentalAutoSelectFirstMatch ] );
 
 	if ( disabled && isActive ) {
 		setIsActive( false );
@@ -433,7 +426,7 @@ export function MultiselectControl( props ) {
 		setIncompleteTokenValue( '' );
 		setSelectedSuggestionIndex( -1 );
 		setSelectedSuggestionScroll( false );
-		setIsExpanded( ! __experimentalExpandOnFocus );
+		setIsExpanded( true );
 
 		if ( isActive ) {
 			focus();
@@ -512,16 +505,9 @@ export function MultiselectControl( props ) {
 			getMatchingSuggestions( incompleteTokenValue );
 		const hasMatchingSuggestions = matchingSuggestions.length > 0;
 
-		const shouldExpandIfFocuses = hasFocus() && __experimentalExpandOnFocus;
-		setIsExpanded(
-			shouldExpandIfFocuses ||
-				( inputHasMinimumChars && hasMatchingSuggestions && hasFocus() )
-		);
-
 		if ( resetSelectedSuggestion ) {
 			if (
 				__experimentalAutoSelectFirstMatch &&
-				inputHasMinimumChars &&
 				hasMatchingSuggestions
 			) {
 				setSelectedSuggestionIndex( 0 );
@@ -531,22 +517,27 @@ export function MultiselectControl( props ) {
 				setSelectedSuggestionScroll( false );
 			}
 		}
+	
+		setIsExpanded(
+			hasFocus() ||
+				( inputHasMinimumChars && hasMatchingSuggestions && hasFocus() )
+		);
+		
+		setSelectedSuggestionIndex( 0 );
 
-		// if ( inputHasMinimumChars ) {
-			const message = hasMatchingSuggestions
-				? sprintf(
-						/* translators: %d: number of results. */
-						_n(
-							'%d result found, use up and down arrow keys to navigate.',
-							'%d results found, use up and down arrow keys to navigate.',
-							matchingSuggestions.length
-						),
+		const message = hasMatchingSuggestions
+			? sprintf(
+					/* translators: %d: number of results. */
+					_n(
+						'%d result found, use up and down arrow keys to navigate.',
+						'%d results found, use up and down arrow keys to navigate.',
 						matchingSuggestions.length
-				)
-				: __( 'No results.' );
+					),
+					matchingSuggestions.length
+			)
+			: __( 'No results.' );
 
-			debouncedSpeak( message, 'assertive' );
-		// }
+		debouncedSpeak( message, 'assertive' );
 	}
 	function getOptionFromValue( optionValue ) {
 		const foundOption = options.find(
@@ -599,6 +590,9 @@ export function MultiselectControl( props ) {
 			onBlur,
 			isExpanded,
 			selectedSuggestionIndex,
+			style: {
+				lineHeight: '24px',
+			}
 		};
 
 		return (
@@ -616,7 +610,7 @@ export function MultiselectControl( props ) {
 
 	const classes = classnames(
 		className,
-		'components-form-token-field__input-container',
+		'codeamp-components-multiselect-control__input-container',
 		{
 			'is-active': isActive,
 			'is-disabled': disabled,
@@ -624,7 +618,7 @@ export function MultiselectControl( props ) {
 	);
 
 	let tokenFieldProps = {
-		className: 'components-base-control components-form-token-field',
+		className: 'components-base-control codeamp-components-multiselect-control',
 		tabIndex: -1,
 	};
 	const matchingSuggestions = getMatchingSuggestions();
@@ -645,7 +639,7 @@ export function MultiselectControl( props ) {
 		<div { ...tokenFieldProps }>
 			<label
 				htmlFor={ `components-form-token-input-${ instanceId }` }
-				className="components-form-token-field__label"
+				className="codeamp-components-multiselect-control__label"
 			>
 				{ label }
 			</label>
@@ -657,9 +651,10 @@ export function MultiselectControl( props ) {
 				onTouchStart={ onContainerTouched }
 			>
 				<Flex
+					className={ 'codeamp-components-multiselect-control__tokens-container' }
 					justify="flex-start"
-					align="center"
-					gap={ 1 }
+					align="flex-start"
+					gap="4px"
 					wrap={ true }
 					__next36pxDefaultSize={ __next36pxDefaultSize }
 					hasTokens={ !! value.length }
@@ -680,18 +675,7 @@ export function MultiselectControl( props ) {
 					/>
 				) }
 			</div>
-			{ __experimentalShowHowTo && (
-				<p
-					id={ `components-form-token-suggestions-howto-${ instanceId }` }
-					className="components-form-token-field__help"
-				>
-					{ tokenizeOnSpace
-						? __(
-								'Separate with commas, spaces, or the Enter key.'
-						)
-						: __( 'Separate with commas or the Enter key.' ) }
-				</p>
-			) }
+			
 		</div>
 	);
 	/* eslint-enable jsx-a11y/no-static-element-interactions */

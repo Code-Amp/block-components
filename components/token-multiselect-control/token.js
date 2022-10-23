@@ -32,7 +32,7 @@ export default function Token( {
 	termsCount,
 } ) {
 	const instanceId = useInstanceId( Token );
-	const tokenClasses = classnames( 'components-form-token-field__token', {
+	const tokenClasses = classnames( 'codeamp-components-multiselect-control__token', {
 		'is-error': 'error' === status,
 		'is-success': 'success' === status,
 		'is-validating': 'validating' === status,
@@ -59,8 +59,8 @@ export default function Token( {
 			title={ title }
 		>
 			<span
-				className="components-form-token-field__token-text"
-				id={ `components-form-token-field__token-text-${ instanceId }` }
+				className="codeamp-components-multiselect-control__token-text"
+				id={ `codeamp-components-multiselect-control__token-text-${ instanceId }` }
 			>
 				<VisuallyHidden as="span">
 					{ termPositionAndCount }
@@ -69,11 +69,11 @@ export default function Token( {
 			</span>
 
 			<Button
-				className="components-form-token-field__remove-token"
+				className="codeamp-components-multiselect-control__remove-token"
 				icon={ closeSmall }
 				onClick={ ! disabled && onClick }
 				label={ messages.remove }
-				aria-describedby={ `components-form-token-field__token-text-${ instanceId }` }
+				aria-describedby={ `codeamp-components-multiselect-control__token-text-${ instanceId }` }
 			/>
 		</span>
 	);

@@ -94,7 +94,7 @@ class SuggestionsList extends Component {
 		return (
 			<ul
 				ref={ this.bindList }
-				className="components-form-token-field__suggestions-list"
+				className="codeamp-components-multiselect-control__suggestions-list"
 				id={ `components-form-token-suggestions-${ this.props.instanceId }` }
 				role="listbox"
 			>
@@ -102,7 +102,7 @@ class SuggestionsList extends Component {
 					<li
 						id={ `components-form-token-suggestions-${ this.props.instanceId }-loading` }
 						role="option"
-						className={ 'components-form-token-field__suggestion' }
+						className={ 'codeamp-components-multiselect-control__suggestion' }
 						key={ this.props.instanceId + '-loading' }
 					>
 						{ __( 'Loading options…', 'search-filter' ) }
@@ -115,7 +115,7 @@ class SuggestionsList extends Component {
 							id={ `components-form-token-suggestions-${ this.props.instanceId }-loading` }
 							role="option"
 							className={
-								'components-form-token-field__suggestion'
+								'codeamp-components-multiselect-control__suggestion'
 							}
 							key={ this.props.instanceId + '-loading' }
 						>
@@ -126,7 +126,7 @@ class SuggestionsList extends Component {
 				{ map( this.props.suggestions, ( suggestion, index ) => {
 					const match = this.computeSuggestionMatch( suggestion );
 					const className = classnames(
-						'components-form-token-field__suggestion',
+						'codeamp-components-multiselect-control__suggestion',
 						{
 							'is-selected': index === this.props.selectedIndex,
 						}
@@ -151,7 +151,7 @@ class SuggestionsList extends Component {
 									) }
 								>
 									{ match.suggestionBeforeMatch }
-									<strong className="components-form-token-field__suggestion-match">
+									<strong className="codeamp-components-multiselect-control__suggestion-match">
 										{ match.suggestionMatch }
 									</strong>
 									{ match.suggestionAfterMatch }

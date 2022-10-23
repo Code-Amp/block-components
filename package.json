@@ -29,6 +29,7 @@
     "dom-scroll-into-view": "^2.0.1"
   },
   "devDependencies": {
+    "@wordpress/base-styles": "^4.11.0",
     "@wordpress/dependency-extraction-webpack-plugin": "^4.3.0"
   }
 }
