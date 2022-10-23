@@ -523,10 +523,6 @@ export function MultiselectControl( props ) {
 				setSelectedSuggestionScroll( false );
 			}
 		}
-	
-		/*  setIsExpanded(
-				( hasMatchingSuggestions && hasFocus() )
-		); */
 		
 		setSelectedSuggestionIndex( 0 );
 

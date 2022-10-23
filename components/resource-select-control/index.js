@@ -17,8 +17,8 @@ export const ResourceSelectControl =
 		onPrimaryAction = noop,
 		onAddNew = noop,
 		label = '',
-		addNewLabel = __( 'Add new', 'search-filter' ),
-		loadingLabel = __( 'Loading', 'search-filter' ),
+		addNewLabel = __( 'Add new', 'codeamp-block-components' ),
+		loadingLabel = __( 'Loading', 'codeamp-block-components' ),
 		showPrimaryAction = true,
 		canAddNew = true,
 		defaultOption,
@@ -88,7 +88,7 @@ export const ResourceSelectControl =
 							}
 							{ ...primaryActionProps }
 						>
-							{ primaryActionProps?.label ?? __( 'Edit', 'search-filter' ) }
+							{ primaryActionProps?.label ?? __( 'Edit', 'codeamp-block-components' ) }
 						</Button>
 					) }
 				</HStack>
