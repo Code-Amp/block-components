@@ -1,8 +1,6 @@
 /**
  * WordPress dependencies
  */
-import { useEffect } from '@wordpress/element';
-import { isEmpty } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import { Button, BaseControl, __experimentalHStack as HStack, SelectControl } from '@wordpress/components';
 import { useInstanceId } from '@wordpress/compose';
