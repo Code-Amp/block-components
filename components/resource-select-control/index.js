@@ -42,7 +42,7 @@ export const ResourceSelectControl =
 			}
 			allTemplateOptions.push( ...options );
 		}
-		const instanceId = useInstanceId( ResourceSelectControl );
+		const instanceId = useInstanceId( ResourceSelectControl, 'codeamp-components-resource-select-control' );
 
 		return (
 			<BaseControl

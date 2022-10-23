@@ -102,7 +102,7 @@ export function SuggestionsList( {
 		<ul
 			ref={ listRef }
 			className="codeamp-components-multiselect-control__suggestions-list"
-			id={ `components-form-token-suggestions-${ instanceId }` }
+			id={ `codeamp-components-multiselect-suggestions-${ instanceId }` }
 			role="listbox"
 		>
 			{ suggestions.map( ( suggestion, index ) => {
@@ -135,7 +135,7 @@ export function SuggestionsList( {
 				/* eslint-disable jsx-a11y/click-events-have-key-events */
 				return (
 					<li
-						id={ `components-form-token-suggestions-${ instanceId }-${ index }` }
+						id={ `codeamp-components-multiselect-suggestions-${ instanceId }-${ index }` }
 						role="option"
 						className={ className }
 						key={

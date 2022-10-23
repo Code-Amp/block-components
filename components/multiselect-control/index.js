@@ -76,7 +76,7 @@ export function MultiselectControl( props ) {
 		__next36pxDefaultSize = false,
 	} = props;
 
-	const instanceId = useInstanceId( MultiselectControl );
+	const instanceId = useInstanceId( MultiselectControl, 'codeamp-components-multiselect-control' );
 
 	// We reset to these initial values again in the onBlur
 	const [ incompleteTokenValue, setIncompleteTokenValue ] = useState( '' );
@@ -638,7 +638,7 @@ export function MultiselectControl( props ) {
 	return (
 		<div { ...tokenFieldProps }>
 			<label
-				htmlFor={ `components-form-token-input-${ instanceId }` }
+				htmlFor={ `codeamp-components-multiselect-control-${ instanceId }` }
 				className="codeamp-components-multiselect-control__label"
 			>
 				{ label }

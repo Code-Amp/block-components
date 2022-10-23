@@ -47,7 +47,7 @@ class TokenInput extends Component {
 		return (
 			<input
 				ref={ this.bindInput }
-				id={ `components-form-token-input-${ instanceId }` }
+				id={ `codeamp-components-multiselect-control-${ instanceId }` }
 				type="text"
 				{ ...props }
 				value={ value || '' }

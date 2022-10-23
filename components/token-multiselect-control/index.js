@@ -685,7 +685,7 @@ export class TokenMultiSelectControlBase extends Component {
 			<div { ...tokenFieldProps }>
 				{ label && (
 					<label
-						htmlFor={ `components-form-token-input-${ instanceId }` }
+						htmlFor={ `codeamp-components-multiselect-control-${ instanceId }` }
 						className="codeamp-components-multiselect-control__label"
 					>
 						{ label }
