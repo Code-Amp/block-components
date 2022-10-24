@@ -55,7 +55,7 @@ export function UnForwardedTokenInput(
 	return (
 		<input
 			ref={ ref }
-			id={ `codeamp-components-multiselect-control-${ instanceId }` }
+			id={ instanceId }
 			type="text"
 			{ ...restProps }
 			value={ value || '' }
@@ -73,7 +73,7 @@ export function UnForwardedTokenInput(
 			aria-autocomplete="list"
 			aria-owns={
 				isExpanded
-					? `codeamp-components-multiselect-suggestions-${ instanceId }`
+					? `${ instanceId }-suggestions`
 					: undefined
 			}
 			aria-activedescendant={
@@ -82,10 +82,10 @@ export function UnForwardedTokenInput(
 				// - there is a selected suggestion (`selectedSuggestionIndex !== -1`)
 				// - the list of suggestions are rendered in the DOM (`isExpanded`)
 				hasFocus && selectedSuggestionIndex !== -1 && isExpanded
-					? `codeamp-components-multiselect-suggestions-${ instanceId }-${ selectedSuggestionIndex }`
+					? `${ instanceId }-suggestions-${ selectedSuggestionIndex }`
 					: undefined
 			}
-			aria-describedby={ `codeamp-components-multiselect-suggestions-howto-${ instanceId }` }
+			aria-describedby={ `${ instanceId }-howto` }
 		/>
 	);
 }

@@ -24,6 +24,7 @@ export const ResourceSelectControl =
 		value,
 		help,
 		primaryActionProps = null,
+		id,
 	} ) => {
 		let allTemplateOptions = [
 			{
@@ -40,7 +41,10 @@ export const ResourceSelectControl =
 			}
 			allTemplateOptions.push( ...options );
 		}
-		const instanceId = useInstanceId( ResourceSelectControl, 'codeamp-components-resource-select-control' );
+		let instanceId = useInstanceId( ResourceSelectControl, 'codeamp-components-resource-select-control' );
+		if ( id ) {
+			instanceId = id;
+		}
 
 		return (
 			<BaseControl
@@ -49,14 +53,16 @@ export const ResourceSelectControl =
 				help={ help }
 			>
 				<HStack>
-					<label
-						htmlFor={ instanceId }
-						className={
-							'codeamp-components-resource-select-control__label'
-							}
-						>
-						{ label }
-					</label>
+					{ label && (
+						<label
+							htmlFor={ instanceId }
+							className={
+								'codeamp-components-resource-select-control__label'
+								}
+							>
+							{ label }
+						</label>
+					) }
 					{ canAddNew && (
 						<Button
 							className={

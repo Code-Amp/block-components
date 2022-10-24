@@ -23,7 +23,6 @@ const handleMouseDown = ( e ) => {
 export function SuggestionsList( {
 	selectedIndex,
 	scrollIntoView,
-	match,
 	searchValue,
 	onHover,
 	onSelect,
@@ -102,7 +101,7 @@ export function SuggestionsList( {
 		<ul
 			ref={ listRef }
 			className="codeamp-components-multiselect-control__suggestions-list"
-			id={ `codeamp-components-multiselect-suggestions-${ instanceId }` }
+			id={ `${ instanceId }-suggestions` }
 			role="listbox"
 		>
 			{ suggestions.length === 0 && (
@@ -143,7 +142,7 @@ export function SuggestionsList( {
 				/* eslint-disable jsx-a11y/click-events-have-key-events */
 				return (
 					<li
-						id={ `codeamp-components-multiselect-suggestions-${ instanceId }-${ index }` }
+						id={ `${ instanceId }-suggestions-${ index }` }
 						role="option"
 						className={ className }
 						key={

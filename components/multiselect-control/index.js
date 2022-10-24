@@ -62,7 +62,7 @@ export function MultiselectControl( props ) {
 		onInputChange = () => {},
 		onFocus = undefined,
 		isBorderless = false,
-		
+		id,
 		disabled = false,
 		messages = {
 			added: __( 'Item added.' ),
@@ -77,8 +77,11 @@ export function MultiselectControl( props ) {
 		__next36pxDefaultSize = false,
 	} = props;
 
-	const instanceId = useInstanceId( MultiselectControl, 'codeamp-components-multiselect-control' );
-
+	let instanceId = useInstanceId( MultiselectControl, 'codeamp-components-multiselect-control' );
+	if ( id ) {
+		instanceId = id;
+	}
+	console.log("instanceId", instanceId, id)
 	// We reset to these initial values again in the onBlur
 	const [ incompleteTokenValue, setIncompleteTokenValue ] = useState( '' );
 	const [ inputOffsetFromEnd, setInputOffsetFromEnd ] = useState( 0 );
@@ -597,7 +600,7 @@ export function MultiselectControl( props ) {
 			},
 			onClick: onFocusHandler,
 		};
-
+		console.log("input props: ", inputProps);
 		return (
 			<TokenInput
 				{ ...inputProps }
@@ -640,12 +643,14 @@ export function MultiselectControl( props ) {
 	/* eslint-disable jsx-a11y/no-static-element-interactions */
 	return (
 		<div { ...tokenFieldProps }>
-			<label
-				htmlFor={ `codeamp-components-multiselect-control-${ instanceId }` }
-				className="codeamp-components-multiselect-control__label"
-			>
-				{ label }
-			</label>
+			{ label && (
+				<label
+					htmlFor={ instanceId }
+					className="codeamp-components-multiselect-control__label"
+				>
+					{ label }
+				</label>
+			) }
 			<div
 				ref={ tokensAndInput }
 				className={ classes }
