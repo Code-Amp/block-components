@@ -81,7 +81,6 @@ export function MultiselectControl( props ) {
 	if ( id ) {
 		instanceId = id;
 	}
-	console.log("instanceId", instanceId, id)
 	// We reset to these initial values again in the onBlur
 	const [ incompleteTokenValue, setIncompleteTokenValue ] = useState( '' );
 	const [ inputOffsetFromEnd, setInputOffsetFromEnd ] = useState( 0 );
@@ -600,7 +599,6 @@ export function MultiselectControl( props ) {
 			},
 			onClick: onFocusHandler,
 		};
-		console.log("input props: ", inputProps);
 		return (
 			<TokenInput
 				{ ...inputProps }
