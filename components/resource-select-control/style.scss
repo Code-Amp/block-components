@@ -6,9 +6,17 @@
 	/* &.components-base-control {
 		margin-bottom: 8px;
 	} */
+
 	
-	&__field {
+	
+	> .components-base-control__field {
 		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+
+		> .components-base-control__label {
+			flex: 2;
+		}
 	}
 	&__label {
 		margin-bottom: 8px;
@@ -20,6 +28,7 @@
 		height: auto;
 		color: var(--wp-admin-theme-color);
 		align-self: center;
+		justify-content: right;
 		&:hover {
 			text-decoration: underline;
 		}

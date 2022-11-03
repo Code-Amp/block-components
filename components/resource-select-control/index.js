@@ -7,13 +7,14 @@ import { useInstanceId } from '@wordpress/compose';
 
 // Styles
 import "./style.scss"
+import classNames from 'classnames';
 
 const noop = () => {};
 export const ResourceSelectControl =
 	( {
 		onChange = noop,
 		onPrimaryAction = noop,
-		onAddNew = noop,
+		onSecondaryAction = noop,
 		label = '',
 		addNewLabel = __( 'Add new', 'codeamp-block-components' ),
 		loadingLabel = __( 'Loading', 'codeamp-block-components' ),
@@ -25,6 +26,7 @@ export const ResourceSelectControl =
 		help,
 		primaryActionProps = null,
 		id,
+		className,
 	} ) => {
 		let allTemplateOptions = [
 			{
@@ -49,31 +51,20 @@ export const ResourceSelectControl =
 		return (
 			<BaseControl
 				id={ instanceId }
-				className={ 'components-base-control codeamp-components-resource-select-control' }
+				className={ classNames( 'components-base-control codeamp-components-resource-select-control', className ) }
 				help={ help }
+				label={ label }
 			>
-				<HStack>
-					{ label && (
-						<label
-							htmlFor={ instanceId }
-							className={
-								'codeamp-components-resource-select-control__label'
-								}
-							>
-							{ label }
-						</label>
-					) }
-					{ canAddNew && (
-						<Button
-							className={
-								'codeamp-components-resource-select-control__add_button'
-							}
-							onClick={ onAddNew }
-						>
-							{ addNewLabel }
-						</Button>
-					) }
-				</HStack>
+				{ canAddNew && (
+					<Button
+						className={
+							'codeamp-components-resource-select-control__add_button'
+						}
+						onClick={ onSecondaryAction }
+					>
+						{ addNewLabel }
+					</Button>
+				) }
 				<HStack>
 					<SelectControl
 						id={ instanceId }

@@ -11,7 +11,7 @@ import { __, _n, sprintf } from '@wordpress/i18n';
 import { useDebounce, useInstanceId, usePrevious } from '@wordpress/compose';
 import { speak } from '@wordpress/a11y';
 import isShallowEqual from '@wordpress/is-shallow-equal';
-import { Flex, FlexItem } from '@wordpress/components';
+import { Flex, FlexItem, BaseControl } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -53,6 +53,7 @@ export function MultiselectControl( props ) {
 		maxLength,
 		placeholder,
 		label = __( 'Add item' ),
+		help,
 		className,
 		suggestions = [],
 		options = [],
@@ -640,49 +641,47 @@ export function MultiselectControl( props ) {
 	// TODO: Refactor click detection to use blur to stop propagation.
 	/* eslint-disable jsx-a11y/no-static-element-interactions */
 	return (
-		<div { ...tokenFieldProps }>
-			{ label && (
-				<label
-					htmlFor={ instanceId }
-					className="codeamp-components-multiselect-control__label"
+		<BaseControl
+			id={ instanceId }
+			label={ label }
+			help={ help }
+		>
+			<div { ...tokenFieldProps }>
+				<div
+					ref={ tokensAndInput }
+					className={ classes }
+					tabIndex={ -1 }
+					onMouseDown={ onContainerTouched }
+					onTouchStart={ onContainerTouched }
 				>
-					{ label }
-				</label>
-			) }
-			<div
-				ref={ tokensAndInput }
-				className={ classes }
-				tabIndex={ -1 }
-				onMouseDown={ onContainerTouched }
-				onTouchStart={ onContainerTouched }
-			>
-				<Flex
-					className={ 'codeamp-components-multiselect-control__tokens-container' }
-					justify="flex-start"
-					align="flex-start"
-					gap="4px"
-					wrap={ true }
-					__next36pxDefaultSize={ __next36pxDefaultSize }
-					hasTokens={ !! value.length }
-				>
-					{ renderTokensAndInput() }
-				</Flex>
-				{ isExpanded && (
-					<SuggestionsList
-						instanceId={ instanceId }
-						match={ getMatch( incompleteTokenValue, options ) }
-						searchValue={ incompleteTokenValue.trim() }
-						suggestions={ matchingSuggestions }
-						selectedIndex={ selectedSuggestionIndex }
-						scrollIntoView={ selectedSuggestionScroll }
-						onHover={ onSuggestionHovered }
-						onSelect={ onSuggestionSelected }
-						__experimentalRenderItem={ __experimentalRenderItem }
-					/>
-				) }
+					<Flex
+						className={ 'codeamp-components-multiselect-control__tokens-container' }
+						justify="flex-start"
+						align="flex-start"
+						gap="4px"
+						wrap={ true }
+						__next36pxDefaultSize={ __next36pxDefaultSize }
+						hasTokens={ !! value.length }
+					>
+						{ renderTokensAndInput() }
+					</Flex>
+					{ isExpanded && (
+						<SuggestionsList
+							instanceId={ instanceId }
+							match={ getMatch( incompleteTokenValue, options ) }
+							searchValue={ incompleteTokenValue.trim() }
+							suggestions={ matchingSuggestions }
+							selectedIndex={ selectedSuggestionIndex }
+							scrollIntoView={ selectedSuggestionScroll }
+							onHover={ onSuggestionHovered }
+							onSelect={ onSuggestionSelected }
+							__experimentalRenderItem={ __experimentalRenderItem }
+						/>
+					) }
+				</div>
+				
 			</div>
-			
-		</div>
+		</BaseControl>
 	);
 	/* eslint-enable jsx-a11y/no-static-element-interactions */
 }

@@ -86,6 +86,7 @@ export function UnForwardedTokenInput(
 					: undefined
 			}
 			aria-describedby={ `${ instanceId }-howto` }
+			data-lpignore="true" // Disable LastPass :/
 		/>
 	);
 }
