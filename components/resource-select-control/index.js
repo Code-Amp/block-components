@@ -19,12 +19,13 @@ export const ResourceSelectControl =
 		addNewLabel = __( 'Add new', 'codeamp-block-components' ),
 		loadingLabel = __( 'Loading', 'codeamp-block-components' ),
 		showPrimaryAction = true,
-		canAddNew = true,
+		showSecondaryAction = true,
 		defaultOption,
 		options,
 		value,
 		help,
 		primaryActionProps = null,
+		secondaryActionProps = null,
 		id,
 		className,
 	} ) => {
@@ -55,12 +56,13 @@ export const ResourceSelectControl =
 				help={ help }
 				label={ label }
 			>
-				{ canAddNew && (
+				{ showSecondaryAction && (
 					<Button
 						className={
 							'codeamp-components-resource-select-control__add_button'
 						}
 						onClick={ onSecondaryAction }
+						{ ...secondaryActionProps }
 					>
 						{ addNewLabel }
 					</Button>
