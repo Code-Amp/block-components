@@ -34,7 +34,6 @@ export const ResourceSelectControl =
 			{
 				value: 'loading',
 				label: loadingLabel,
-				//disabled: true,
 			},
 		];
 
