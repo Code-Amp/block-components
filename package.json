@@ -1,6 +1,6 @@
 {
-  "name": "codeamp-block-components",
-  "version": "0.0.1",
+  "name": "@codeamp/block-components",
+  "version": "0.0.1-beta.0",
   "description": "React components for the WordPress block editor",
   "main": "index.js",
   "scripts": {
@@ -18,11 +18,11 @@
     "react"
   ],
   "author": "Ross Morsali",
-  "license": "MIT",
+  "license": "GPL-2.0-or-later",
   "bugs": {
-    "url": "https://github.com/rmorse/codeamp-block-components/issues"
+    "url": "https://github.com/Code-Amp/block-components/issues"
   },
-  "homepage": "https://github.com/rmorse/codeamp-block-components#readme",
+  "homepage": "https://github.com/Code-Amp/block-components#readme",
   "dependencies": {
     "@wordpress/icons": "^9.11.0",
     "classnames": "^2.3.2",
