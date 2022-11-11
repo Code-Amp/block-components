@@ -1,9 +1,9 @@
-# Code Amp Block Componentts
+# Code Amp Block Components
 > React components for the WordPress block editor.
 
 ## Install
 
-Run `npm install`
+Run `npm install @codeamp/block-components`
 
 ### Project setup
 
