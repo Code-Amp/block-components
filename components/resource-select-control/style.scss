@@ -1,14 +1,5 @@
-
-// TODO - needs renaming for layouts + templates (some sort of base class?)
-
 .codeamp-components-resource-select-control {
 	// Need to add this specificity to the base control container.
-	/* &.components-base-control {
-		margin-bottom: 8px;
-	} */
-
-	
-	
 	> .components-base-control__field {
 		position: relative;
 		display: flex;

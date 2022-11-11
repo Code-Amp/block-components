@@ -19,7 +19,6 @@ import { Flex, FlexItem, BaseControl } from '@wordpress/components';
 import Token from './token';
 import TokenInput from './token-input';
 import SuggestionsList from './suggestions-list';
-// import { StyledLabel } from '../base-control/styles/base-control-styles';
 
 // Styles
 import "./style.scss"
@@ -679,7 +678,6 @@ export function MultiselectControl( props ) {
 						/>
 					) }
 				</div>
-				
 			</div>
 		</BaseControl>
 	);
