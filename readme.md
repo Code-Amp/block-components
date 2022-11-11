@@ -31,3 +31,14 @@ For a webpack environment, this usually means adding the something similar to th
 ```
 
 [Additional configuration required, checkout the webpack docs for more info](https://webpack.js.org/plugins/mini-css-extract-plugin/).
+
+# Project status
+
+This package is currently published as beta while we continue to setup the repository and add testing, but should be completely usable.
+
+Expect updates in the near future.
+
+# Contributing
+
+All contributions are welcome, but at this early stage the priority is to setup testing and improve the documentation.
+
