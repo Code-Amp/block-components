@@ -16,7 +16,8 @@ export const ResourceSelectControl =
 		onPrimaryAction = noop,
 		onSecondaryAction = noop,
 		label = '',
-		addNewLabel = __( 'Add new', 'codeamp-block-components' ),
+		primaryActionLabel = __( 'Edit', 'codeamp-block-components' ),
+		secondaryActionLabel = __( 'Add new', 'codeamp-block-components' ),
 		loadingLabel = __( 'Loading', 'codeamp-block-components' ),
 		showPrimaryAction = true,
 		showSecondaryAction = true,
@@ -24,8 +25,8 @@ export const ResourceSelectControl =
 		options,
 		value,
 		help,
-		primaryActionProps = null,
-		secondaryActionProps = null,
+		primaryActionProps,
+		secondaryActionProps,
 		id,
 		className,
 	} ) => {
@@ -64,7 +65,7 @@ export const ResourceSelectControl =
 						onClick={ onSecondaryAction }
 						{ ...secondaryActionProps }
 					>
-						{ addNewLabel }
+						{ secondaryActionProps?.label ?? secondaryActionLabel }
 					</Button>
 				) }
 				<HStack>
@@ -85,7 +86,7 @@ export const ResourceSelectControl =
 							}
 							{ ...primaryActionProps }
 						>
-							{ primaryActionProps?.label ?? __( 'Edit', 'codeamp-block-components' ) }
+							{ primaryActionProps?.label ?? primaryActionLabel }
 						</Button>
 					) }
 				</HStack>
