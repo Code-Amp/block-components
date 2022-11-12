@@ -5,3 +5,4 @@ desktop.ini
 /dist
 /local
 *.zip
+./dist
