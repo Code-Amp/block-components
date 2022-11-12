@@ -6,6 +6,7 @@ const path = require( 'path' );
 
 const config = {
 	entry: './index.js',
+	mode: 'production',
 	output: {
 		filename: "index.js",
 		path: path.resolve(__dirname, "dist"),
@@ -30,11 +31,8 @@ const config = {
 			{
 				test: /\.scss$/,
 				use: [
-					// Creates `style` nodes from JS strings
-					// MiniCssExtractPlugin.loader,
-					// Translates CSS into CommonJS
+					'style-loader',
 					'css-loader',
-					// Compiles Sass to CSS
 					'sass-loader',
 				],
 			},
@@ -42,9 +40,6 @@ const config = {
 	},
 	plugins: [
 		new DependencyExtractionWebpackPlugin(),
-		/* new MiniCssExtractPlugin( {
-			filename: 'css/admin/[name].css',
-		} ), */
 	],
 	resolve: {
 		extensions: [".js", ".jsx"],
