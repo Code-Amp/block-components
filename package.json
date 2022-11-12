@@ -25,11 +25,11 @@
   "homepage": "https://github.com/Code-Amp/block-components#readme",
   "dependencies": {
     "@wordpress/icons": "^9.11.0",
+    "@wordpress/base-styles": "^4.11.0",
     "classnames": "^2.3.2",
     "dom-scroll-into-view": "^2.0.1"
   },
   "devDependencies": {
-    "@wordpress/base-styles": "^4.11.0",
     "@wordpress/dependency-extraction-webpack-plugin": "^4.3.0"
   }
 }
