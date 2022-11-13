@@ -9,13 +9,13 @@ Run `npm install @codeamp/block-components`
 
 ## Components
 
-### [MultiSelectControl](https://github.com/Code-Amp/block-components/tree/main/components/multi-select-control)
+- [MultiSelectControl](https://github.com/Code-Amp/block-components/tree/main/components/multi-select-control)
 
-A multi-select control for the block editor based on `FormTokenField`.
+  A multi-select control for the block editor based on `FormTokenField`.
 
-### [ResourceSelectControl](https://github.com/Code-Amp/block-components/tree/main/components/resource-select-control)
+- [ResourceSelectControl](https://github.com/Code-Amp/block-components/tree/main/components/resource-select-control)
 
-A resource select control, allowing for the selection of a resource from a list of resources as well as additional actions (primary + secondary) to be performed on the resource.
+  A select control with actions for creating and editing resources.
 
 ## Usage
 
@@ -25,13 +25,9 @@ Use imports to include the components in your project.
 import { MultiSelectControl, ResourceSelectControl } from '@codeamp/block-components';
 ```
 
-The components are tree-shakeable, so you can import only the components you need.
-
 ## Project status
 
 This package is currently published as beta while we continue to setup the repository and add testing, but should be completely usable.
-
-Expect updates in the near future.
 
 ## Contributing
 
