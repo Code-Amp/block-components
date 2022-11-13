@@ -4,7 +4,7 @@
 
 A multi-select control in the style of Gutenberg components.
 
-This is a modified version of `FormTokenField` - behaving more like a multiselect.
+This is a modified version of `FormTokenField` - behaving more like a multi-select.
 
 The main differences:
 - Takes an array of value/label pairs for populating the options/suggestions
@@ -48,7 +48,7 @@ Should support most of the properties from [Form Token Field](https://github.com
 ## Usage
 
 ```jsx
-import { MultiselectControl } from '@codeamp/block-components';
+import { MultiSelectControl } from '@codeamp/block-components';
 import { withState } from '@wordpress/compose';
 
 const MyMultiSelectControl = withState( {
