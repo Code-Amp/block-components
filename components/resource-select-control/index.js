@@ -30,19 +30,23 @@ export const ResourceSelectControl =
 		id,
 		className,
 	} ) => {
-		let allTemplateOptions = [
-			{
-				value: 'loading',
-				label: loadingLabel,
-			},
-		];
+		let allResourceOptions = [];
+		
+		if ( loadingLabel ) {
+			allResourceOptions = [
+				{
+					value: 'loading',
+					label: loadingLabel,
+				},
+			];
+		}
 
 		if ( options ) {
-			allTemplateOptions = [];
+			allResourceOptions = [];
 			if ( defaultOption ) {
-				allTemplateOptions.push( defaultOption );
+				allResourceOptions.push( defaultOption );
 			}
-			allTemplateOptions.push( ...options );
+			allResourceOptions.push( ...options );
 		}
 		let instanceId = useInstanceId( ResourceSelectControl, 'codeamp-components-resource-select-control' );
 		if ( id ) {
@@ -71,7 +75,7 @@ export const ResourceSelectControl =
 					<SelectControl
 						id={ instanceId }
 						value={ value }
-						options={ allTemplateOptions }
+						options={ allResourceOptions }
 						className={ 'codeamp-components-resource-select-control__select' }
 						onChange={ onChange }
 					 />
