@@ -9,7 +9,7 @@ Run `npm install @codeamp/block-components`
 
 ## Components
 
-### [MultiselectControl](https://github.com/Code-Amp/block-components/tree/main/components/multiselect-control)
+### [MultiSelectControl](https://github.com/Code-Amp/block-components/tree/main/components/multi-select-control)
 
 A multi-select control for the block editor based on `FormTokenField`.
 
@@ -22,7 +22,7 @@ A resource select control, allowing for the selection of a resource from a list 
 Use imports to include the components in your project.
 
 ```jsx
-import { MultiselectControl, ResourceSelectControl } from '@codeamp/block-components';
+import { MultiSelectControl, ResourceSelectControl } from '@codeamp/block-components';
 ```
 
 The components are tree-shakeable, so you can import only the components you need.

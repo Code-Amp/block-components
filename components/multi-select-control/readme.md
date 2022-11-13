@@ -1,6 +1,6 @@
 # MultiSelectControl
 
-![Demo](_resources/multi-select-control.gif)
+![Demo](../_resources/multi-select-control.gif)
 
 A multi-select control in the style of Gutenberg components.
 
