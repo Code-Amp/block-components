@@ -25,6 +25,14 @@ Use imports to include the components in your project.
 import { MultiSelectControl, ResourceSelectControl } from '@codeamp/block-components';
 ```
 
+## Requirements
+
+This project is depends on the WordPress block editor and such it expects those packages to already be installed/aliased.
+
+Ensure you add [@wordpress/dependency-extraction-webpack-plugin](https://www.npmjs.com/package/@wordpress/dependency-extraction-webpack-plugin) to your project or manually install the WordPress packages.
+
+If you use [@wordpress/create-block](https://www.npmjs.com/package/@wordpress/create-block) to create a plugin, this is handled for you automatically.
+
 ## Project status
 
 This package is currently published as beta while we continue to setup the repository and add testing, but should be completely usable.
