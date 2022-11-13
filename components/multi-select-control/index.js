@@ -45,7 +45,7 @@ const noop = () => {};
  * The `value` property is handled in a manner similar to controlled form components.
  * See [Forms](http://facebook.github.io/react/docs/forms.html) in the React Documentation for more information.
  */
-export function MultiselectControl( props ) {
+export function MultiSelectControl( props ) {
 	const {
 		autoCapitalize,
 		autoComplete,
@@ -77,7 +77,7 @@ export function MultiselectControl( props ) {
 		__next36pxDefaultSize = false,
 	} = props;
 
-	let instanceId = useInstanceId( MultiselectControl, 'codeamp-components-multiselect-control' );
+	let instanceId = useInstanceId( MultiSelectControl, 'codeamp-components-multi-select-control' );
 	if ( id ) {
 		instanceId = id;
 	}
@@ -614,7 +614,7 @@ export function MultiselectControl( props ) {
 
 	const classes = classnames(
 		className,
-		'codeamp-components-multiselect-control__input-container',
+		'codeamp-components-multi-select-control__input-container',
 		{
 			'is-active': isActive,
 			'is-disabled': disabled,
@@ -622,7 +622,7 @@ export function MultiselectControl( props ) {
 	);
 
 	let tokenFieldProps = {
-		className: 'components-base-control codeamp-components-multiselect-control',
+		className: 'components-base-control codeamp-components-multi-select-control',
 		tabIndex: -1,
 	};
 	const matchingSuggestions = getMatchingSuggestions();
@@ -654,7 +654,7 @@ export function MultiselectControl( props ) {
 					onTouchStart={ onContainerTouched }
 				>
 					<Flex
-						className={ 'codeamp-components-multiselect-control__tokens-container' }
+						className={ 'codeamp-components-multi-select-control__tokens-container' }
 						justify="flex-start"
 						align="flex-start"
 						gap="4px"

@@ -1,13 +1,13 @@
 @import '../base-styles/style.scss';
 
-.codeamp-components-multiselect-control {
+.codeamp-components-multi-select-control {
 	&__input-container {
 		font-size: 13px;
 		line-height: normal;
 	}
 }
 
-.codeamp-components-multiselect-control__input-container {
+.codeamp-components-multi-select-control__input-container {
 	@include input-control();
 	width: 100%;
 	margin: 0 0 $grid-unit-10 0;
@@ -23,7 +23,7 @@
 		@include input-style__focus();
 	}
 	// Token input
-	input[type="text"].codeamp-components-multiselect-control__input {
+	input[type="text"].codeamp-components-multi-select-control__input {
 		display: inline-block;
 		flex: 1;
 		font-family: inherit;
@@ -46,17 +46,17 @@
 		}
 
 		&:focus,
-		.codeamp-components-multiselect-control.is-active & {
+		.codeamp-components-multi-select-control.is-active & {
 			outline: none;
 			box-shadow: none;
 		}
 	}
-	.codeamp-components-multiselect-control__token + input[type="text"].codeamp-components-multiselect-control__input {
+	.codeamp-components-multi-select-control__token + input[type="text"].codeamp-components-multi-select-control__input {
 		width: auto;
 	}
 }
 
-.codeamp-components-multiselect-control__help {
+.codeamp-components-multi-select-control__help {
 	font-size: $helptext-font-size;
 	font-style: normal;
 	color: $gray-700;
@@ -64,11 +64,11 @@
 
 
 // Tokens
-.codeamp-components-multiselect-control__tokens-container {
+.codeamp-components-multi-select-control__tokens-container {
 	padding: 4px;
 }
 
-.codeamp-components-multiselect-control__token {
+.codeamp-components-multi-select-control__token {
 	font-size: $default-font-size;
 	display: flex;
 	color: $gray-900;
@@ -78,12 +78,12 @@
 		position: relative;
 		padding: 0 24px 0 0;
 
-		.codeamp-components-multiselect-control__token-text {
+		.codeamp-components-multi-select-control__token-text {
 			background: transparent;
 			color: var(--wp-admin-theme-color);
 		}
 
-		.codeamp-components-multiselect-control__remove-token {
+		.codeamp-components-multi-select-control__remove-token {
 			background: transparent;
 			color: $gray-700;
 			position: absolute;
@@ -93,13 +93,13 @@
 		}
 
 		&.is-success {
-			.codeamp-components-multiselect-control__token-text {
+			.codeamp-components-multi-select-control__token-text {
 				color: $alert-green;
 			}
 		}
 
 		&.is-error {
-			.codeamp-components-multiselect-control__token-text {
+			.codeamp-components-multi-select-control__token-text {
 				color: $alert-red;
 				border-radius: 4px 0 0 4px;
 				padding: 0 4px 0 6px;
@@ -107,21 +107,21 @@
 		}
 
 		&.is-validating {
-			.codeamp-components-multiselect-control__token-text {
+			.codeamp-components-multi-select-control__token-text {
 				color: $gray-900;
 			}
 		}
 	}
 
 	&.is-disabled {
-		.codeamp-components-multiselect-control__remove-token {
+		.codeamp-components-multi-select-control__remove-token {
 			cursor: default;
 		}
 	}
 }
 
-.codeamp-components-multiselect-control__token-text,
-.codeamp-components-multiselect-control__remove-token.components-button {
+.codeamp-components-multi-select-control__token-text,
+.codeamp-components-multi-select-control__remove-token.components-button {
 	display: inline-block;
 	line-height: 24px;
 	height: auto;
@@ -131,7 +131,7 @@
 	@include reduce-motion;
 }
 
-.codeamp-components-multiselect-control__token-text {
+.codeamp-components-multi-select-control__token-text {
 	border-radius: 2px 0 0 2px;
 	padding: 0 0 0 8px;
 	white-space: nowrap;
@@ -139,7 +139,7 @@
 	text-overflow: ellipsis;
 }
 
-.codeamp-components-multiselect-control__remove-token.components-button {
+.codeamp-components-multi-select-control__remove-token.components-button {
 	cursor: pointer;
 	border-radius: 0 2px 2px 0;
 	padding: 0 2px;
@@ -153,7 +153,7 @@
 }
 
 // Suggestion list
-.codeamp-components-multiselect-control__suggestions-list {
+.codeamp-components-multi-select-control__suggestions-list {
 	flex: 1 0 100%;
 	min-width: 100%;
 	max-height: 9em;
@@ -166,14 +166,14 @@
 	padding: 0;
 }
 
-.codeamp-components-multiselect-control__no-suggestions {
+.codeamp-components-multi-select-control__no-suggestions {
 	color: $gray-700;
 	font-size: $default-font-size;
 	margin: 0;
 	display: block;
 	padding: 4px 8px;
 }
-.codeamp-components-multiselect-control__suggestion {
+.codeamp-components-multi-select-control__suggestion {
 	color: $gray-700;
 	display: block;
 	font-size: $default-font-size;
@@ -187,6 +187,6 @@
 	}
 }
 
-.codeamp-components-multiselect-control__suggestion-match {
+.codeamp-components-multi-select-control__suggestion-match {
 	text-decoration: underline;
 }

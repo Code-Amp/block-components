@@ -65,7 +65,7 @@ export function UnForwardedTokenInput(
 			size={ size }
 			className={ classnames(
 				className,
-				'codeamp-components-multiselect-control__input'
+				'codeamp-components-multi-select-control__input'
 			) }
 			autoComplete="off"
 			role="combobox"

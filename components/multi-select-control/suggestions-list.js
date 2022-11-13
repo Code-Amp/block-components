@@ -100,13 +100,13 @@ export function SuggestionsList( {
 	return (
 		<ul
 			ref={ listRef }
-			className="codeamp-components-multiselect-control__suggestions-list"
+			className="codeamp-components-multi-select-control__suggestions-list"
 			id={ `${ instanceId }-suggestions` }
 			role="listbox"
 		>
 			{ suggestions.length === 0 && (
 				<li
-					className="codeamp-components-multiselect-control__no-suggestions"
+					className="codeamp-components-multi-select-control__no-suggestions"
 					role="option"
 				>
 					{ __( 'No results found.', 'codeamp-block-components' ) }
@@ -115,7 +115,7 @@ export function SuggestionsList( {
 			{ suggestions.map( ( suggestion, index ) => {
 				const matchText = computeSuggestionMatch( suggestion );
 				const className = classnames(
-					'codeamp-components-multiselect-control__suggestion',
+					'codeamp-components-multi-select-control__suggestion',
 					{
 						'is-selected': index === selectedIndex,
 					}
@@ -129,7 +129,7 @@ export function SuggestionsList( {
 					output = (
 						<span aria-label={ suggestion.label }>
 							{ matchText.suggestionBeforeMatch }
-							<strong className="codeamp-components-multiselect-control__suggestion-match">
+							<strong className="codeamp-components-multi-select-control__suggestion-match">
 								{ matchText.suggestionMatch }
 							</strong>
 							{ matchText.suggestionAfterMatch }
