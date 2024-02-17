@@ -20,6 +20,7 @@ export const ResourceSelectControl =
 		secondaryActionLabel = __( 'Add new', 'codeamp-block-components' ),
 		loadingLabel = __( 'Loading', 'codeamp-block-components' ),
 		showPrimaryAction = true,
+		disabled = false,
 		showSecondaryAction = true,
 		defaultOption,
 		options,
@@ -65,6 +66,7 @@ export const ResourceSelectControl =
 						className={
 							'codeamp-components-resource-select-control__add_button'
 						}
+						disabled={ disabled }
 						onClick={ onSecondaryAction }
 						{ ...secondaryActionProps }
 					>
@@ -78,11 +80,13 @@ export const ResourceSelectControl =
 						options={ allResourceOptions }
 						className={ 'codeamp-components-resource-select-control__select' }
 						onChange={ onChange }
+						disabled={ disabled }
 					 />
 					{ showPrimaryAction && (
 						<Button
 							onClick={ onPrimaryAction }
 							variant="secondary"
+							disabled={ disabled }
 							// disabled={ ! editReady }
 							className={
 								'codeamp-components-resource-select-control__edit_button'
