@@ -25,9 +25,9 @@
 		}
 		margin-bottom: 8px;
 	}
-	&__edit_button {
+	&__edit_button.components-button.is-secondary {
 		height: auto;
-		margin-bottom: 8px;
+		margin-bottom: 0;
 	}
 	&__select {
 		width: auto;
