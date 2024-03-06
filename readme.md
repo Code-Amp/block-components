@@ -41,3 +41,14 @@ This package is currently published as beta while we continue to setup the repos
 
 All contributions are welcome, but at this early stage the priority is to setup testing and improve the documentation.
 
+
+
+## Updating the project version number
+
+To update the project version number, run the following command:
+
+```
+npm version <update_type>
+```
+
+Where `<update_type>` is one of the semantic versioning release types: `patch`, `minor`, or `major`. This command will update the version number in `package.json`, create a version commit, and tag the commit.

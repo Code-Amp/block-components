@@ -67,7 +67,7 @@ export default function Token( {
 			<Button
 				className="codeamp-components-multi-select-control__remove-token"
 				icon={ closeSmall }
-				onClick={ ! disabled && onClick }
+				onClick={ ! disabled ? onClick : noop }
 				label={ messages.remove }
 				aria-describedby={ `codeamp-components-multi-select-control__token-text-${ instanceId }` }
 			/>
