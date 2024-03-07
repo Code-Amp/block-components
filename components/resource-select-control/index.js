@@ -60,6 +60,7 @@ export const ResourceSelectControl =
 				className={ classNames( 'components-base-control codeamp-components-resource-select-control', className ) }
 				help={ help }
 				label={ label }
+				__nextHasNoMarginBottom={ true }
 			>
 				{ showSecondaryAction && (
 					<Button
@@ -81,6 +82,7 @@ export const ResourceSelectControl =
 						className={ 'codeamp-components-resource-select-control__select' }
 						onChange={ onChange }
 						disabled={ disabled }
+						__nextHasNoMarginBottom={ true }
 					 />
 					{ showPrimaryAction && (
 						<Button
