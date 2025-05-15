@@ -74,7 +74,6 @@ export function MultiSelectControl( props ) {
 		__experimentalAutoSelectFirstMatch = true,
 		__experimentalValidateInput = () => true,
 		__experimentalCloseSuggestionsOnSelect = true,
-		__next40pxDefaultSize = false,
 	} = props;
 
 	let instanceId = useInstanceId( MultiSelectControl, 'codeamp-components-multi-select-control' );
@@ -554,7 +553,6 @@ export function MultiSelectControl( props ) {
 	function renderTokensAndInput() {
 		const components = [];
 		value.forEach( ( item, index ) => {
-			console.log("item: ", item)
 			const option = getOptionFromValue( item );
 			if ( ! getOptionFromValue( item ) ) {
 				return;
@@ -667,7 +665,6 @@ export function MultiSelectControl( props ) {
 						align="flex-start"
 						gap="4px"
 						wrap={ true }
-						__next40pxDefaultSize={ __next40pxDefaultSize }
 						hasTokens={ !! value.length }
 					>
 						{ renderTokensAndInput() }
