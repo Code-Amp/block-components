@@ -13,6 +13,8 @@
 	margin: 0 0 $grid-unit-10 0;
 	padding: 0;
 	cursor: text;
+	
+	
 
 	&.is-disabled {
 		background: $gray-300;
@@ -38,6 +40,7 @@
 		border: 0;
 		color: $gray-900;
 		box-shadow: none;
+		line-height: 30px;
 
 		// Resolves Zooming on iOS devices
 		// https://github.com/WordPress/gutenberg/issues/27405
@@ -65,7 +68,9 @@
 
 // Tokens
 .codeamp-components-multi-select-control__tokens-container {
-	padding: 4px;
+    min-height: 38px;
+    padding: 4px;
+	width: 100%;
 }
 
 .codeamp-components-multi-select-control__token {
@@ -73,7 +78,8 @@
 	display: flex;
 	color: $gray-900;
 	max-width: 100%;
-
+	padding: 0;
+	
 	&.is-borderless {
 		position: relative;
 		padding: 0 24px 0 0;
@@ -123,7 +129,7 @@
 .codeamp-components-multi-select-control__token-text,
 .codeamp-components-multi-select-control__remove-token.components-button {
 	display: inline-block;
-	line-height: 24px;
+	line-height: 30px;
 	height: auto;
 	background: $gray-300;
 	min-width: unset;
@@ -133,7 +139,7 @@
 
 .codeamp-components-multi-select-control__token-text {
 	border-radius: 2px 0 0 2px;
-	padding: 0 0 0 8px;
+	padding: 0 0 0 12px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -142,7 +148,7 @@
 .codeamp-components-multi-select-control__remove-token.components-button {
 	cursor: pointer;
 	border-radius: 0 2px 2px 0;
-	padding: 0 2px;
+	padding: 0 4px;
 	color: $gray-900;
 	line-height: 10px;
 	overflow: initial;
@@ -156,7 +162,7 @@
 .codeamp-components-multi-select-control__suggestions-list {
 	flex: 1 0 100%;
 	min-width: 100%;
-	max-height: 9em;
+	// max-height: 9em;
 	overflow-y: auto;
 	transition: all 0.15s ease-in-out;
 	@include reduce-motion("transition");

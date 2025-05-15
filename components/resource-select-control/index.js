@@ -4,6 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { Button, BaseControl, __experimentalHStack as HStack, SelectControl } from '@wordpress/components';
 import { useInstanceId } from '@wordpress/compose';
+import { edit } from '@wordpress/icons';
 
 // Styles
 import "./style.scss"
@@ -83,20 +84,21 @@ export const ResourceSelectControl =
 						onChange={ onChange }
 						disabled={ disabled }
 						__nextHasNoMarginBottom={ true }
+						__next40pxDefaultSize={ true }
 					 />
 					{ showPrimaryAction && (
 						<Button
 							onClick={ onPrimaryAction }
-							variant="secondary"
+							variant="tertiary"
 							disabled={ disabled }
-							// disabled={ ! editReady }
 							className={
 								'codeamp-components-resource-select-control__edit_button'
 							}
 							{ ...primaryActionProps }
-						>
-							{ primaryActionProps?.label ?? primaryActionLabel }
-						</Button>
+							label= { primaryActionProps?.label ?? primaryActionLabel }
+							icon={ edit }
+							iconSize={ 26 }
+						/>
 					) }
 				</HStack>
 			</BaseControl>
