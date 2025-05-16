@@ -2,9 +2,9 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Button, BaseControl, __experimentalHStack as HStack, SelectControl } from '@wordpress/components';
+import { Button, BaseControl, __experimentalHStack as HStack, SelectControl, DropdownMenu } from '@wordpress/components';
 import { useInstanceId } from '@wordpress/compose';
-import { edit } from '@wordpress/icons';
+import { moreVertical } from '@wordpress/icons';
 
 // Styles
 import "./style.scss"
@@ -14,21 +14,16 @@ const noop = () => {};
 export const ResourceSelectControl =
 	( {
 		onChange = noop,
-		onPrimaryAction = noop,
-		onSecondaryAction = noop,
 		label = '',
-		primaryActionLabel = __( 'Edit', 'codeamp-block-components' ),
-		secondaryActionLabel = __( 'Add new', 'codeamp-block-components' ),
 		loadingLabel = __( 'Loading', 'codeamp-block-components' ),
-		showPrimaryAction = true,
+		showActions = true,
+		dropdownProps,
+		dropdownToggleProps,
 		disabled = false,
-		showSecondaryAction = true,
 		defaultOption,
 		options,
 		value,
 		help,
-		primaryActionProps,
-		secondaryActionProps,
 		id,
 		className,
 	} ) => {
@@ -63,18 +58,6 @@ export const ResourceSelectControl =
 				label={ label }
 				__nextHasNoMarginBottom={ true }
 			>
-				{ showSecondaryAction && (
-					<Button
-						className={
-							'codeamp-components-resource-select-control__add_button'
-						}
-						disabled={ disabled }
-						onClick={ onSecondaryAction }
-						{ ...secondaryActionProps }
-					>
-						{ secondaryActionProps?.label ?? secondaryActionLabel }
-					</Button>
-				) }
 				<HStack>
 					<SelectControl
 						id={ instanceId }
@@ -86,18 +69,16 @@ export const ResourceSelectControl =
 						__nextHasNoMarginBottom={ true }
 						__next40pxDefaultSize={ true }
 					 />
-					{ showPrimaryAction && (
-						<Button
-							onClick={ onPrimaryAction }
-							variant="tertiary"
-							disabled={ disabled }
-							className={
-								'codeamp-components-resource-select-control__edit_button'
-							}
-							{ ...primaryActionProps }
-							label= { primaryActionProps?.label ?? primaryActionLabel }
-							icon={ edit }
-							iconSize={ 26 }
+					 { showActions && (
+						<DropdownMenu
+							icon={ moreVertical }
+							toggleProps={ {
+								className: 'codeamp-components-resource-select-control__menu_button',
+								iconSize: 26,
+								...dropdownToggleProps,
+								__next40pxDefaultSize: true,
+							} }
+							{ ...dropdownProps }
 						/>
 					) }
 				</HStack>

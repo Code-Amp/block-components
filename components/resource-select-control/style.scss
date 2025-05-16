@@ -12,22 +12,19 @@
 	&__label {
 		margin-bottom: 8px;
 	}
-	&__add_button {
-		padding: 0;
-		margin: 0;
-		min-height: revert;
-		height: auto;
-		color: var(--wp-admin-theme-color);
-		align-self: center;
-		justify-content: right;
-		&:hover {
-			text-decoration: underline;
-		}
-		margin-bottom: 8px;
-	}
-	&__edit_button.components-button.is-tertiary {
+	.codeamp-components-resource-select-control__menu_button.has-icon {
 		height: 40px;
 		margin-bottom: 0;
+
+		min-width: 26px;
+		padding: 2px 0;
+		flex-basis: 26px;
+		width: 26px;
+
+		/* >svg {
+			width: 26px;
+			height: 26px;
+		} */
 	}
 	&__select {
 		width: auto;
